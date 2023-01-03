@@ -6,4 +6,5 @@
     <string name="surname">Surname:</string>
     <string name="age">Age:</string>
     <string name="add">Add</string>
+    <string name="id">ID:</string>
 </resources>

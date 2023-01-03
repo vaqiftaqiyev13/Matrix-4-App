@@ -6,9 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.vagif_tagiyev.customalertdialogmatrix4app.R
-
-
-
 class AddDialogFragment : Fragment() {
 
     override fun onCreateView(

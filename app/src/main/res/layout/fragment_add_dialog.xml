@@ -20,6 +20,7 @@
             android:id="@+id/name_edit_txt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="text"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -37,6 +38,7 @@
             android:id="@+id/surname_edit_txt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="text"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,19 +56,20 @@
             android:id="@+id/age_edit_txt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/add_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:backgroundTint="#195b8a"
         android:text="@string/add"
-        android:textSize="20sp"
-        android:textAllCaps="false"/>
-
+        android:textAllCaps="false"
+        android:textSize="20sp" />
 
 
 </LinearLayout>
