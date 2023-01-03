@@ -9,14 +9,14 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.vagif_tagiyev.customalertdialogmatrix4app.databinding.ListItemBinding
 import com.vagif_tagiyev.customalertdialogmatrix4app.model.Person
 
-class Adapter(private val context: Context, private val personList: List<Person>) :
+class Adapter(private val personList: List<Person>) :
     RecyclerView.Adapter<Adapter.ViewHolder>() {
 
     inner class ViewHolder(val holderBinding: ListItemBinding) :
         RecyclerView.ViewHolder(holderBinding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(ListItemBinding.inflate(LayoutInflater.from(context), parent, false))
+        return ViewHolder(ListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
