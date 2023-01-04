@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.vagif_tagiyev.customalertdialogmatrix4app.databinding.ListItemBinding
 import com.vagif_tagiyev.customalertdialogmatrix4app.model.Person
 
-class Adapter(private val personList: List<Person>) :
+class Adapter(private var personList: ArrayList<Person>) :
     RecyclerView.Adapter<Adapter.ViewHolder>() {
 
     inner class ViewHolder(val holderBinding: ListItemBinding) :
@@ -30,6 +30,16 @@ class Adapter(private val personList: List<Person>) :
     }
 
     override fun getItemCount() = personList.size
+
+    fun addPerson(person: Person){
+        personList.add(person)
+        notifyItemInserted(personList.size-1)
+    }
+
+    fun updateElements(newList: ArrayList<Person>){
+        this.personList = newList
+        notifyDataSetChanged()
+    }
 
 
 }

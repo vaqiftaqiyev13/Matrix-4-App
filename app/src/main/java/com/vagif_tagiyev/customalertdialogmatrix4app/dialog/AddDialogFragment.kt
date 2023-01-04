@@ -1,22 +1,44 @@
 package com.vagif_tagiyev.customalertdialogmatrix4app.dialog
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.vagif_tagiyev.customalertdialogmatrix4app.R
+import com.vagif_tagiyev.customalertdialogmatrix4app.databinding.FragmentAddDialogBinding
+import com.vagif_tagiyev.customalertdialogmatrix4app.model.Person
+
 class AddDialogFragment : DialogFragment() {
+    private lateinit var binding: FragmentAddDialogBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
 
+        binding = FragmentAddDialogBinding.inflate(inflater, container, false)
+
+        binding.addBtn.setOnClickListener {
+            val listener =
+                requireArguments().getSerializable("AddDialogListener")!! as AddDialogClickListener
 
 
-        return inflater.inflate(R.layout.fragment_add_dialog, container, false)
+            listener.onAddClick(
+                person = Person(
+                    null, binding.nameLayout.editText!!.text.toString(),
+                    binding.surnameEditTxt.text.toString(),
+                    binding.ageEditTxt.text.toString().toInt()
+
+                )
+            )
+            dismiss()
+        }
+
+        return binding.root
     }
 
+}
+
+fun interface AddDialogClickListener : java.io.Serializable {
+    fun onAddClick(person: Person)
 }
