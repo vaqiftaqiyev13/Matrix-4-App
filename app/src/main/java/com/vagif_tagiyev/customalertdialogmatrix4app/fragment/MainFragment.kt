@@ -32,6 +32,7 @@ class MainFragment : Fragment(), AddDialogClickListener {
         fragmentMainBinding.rv.apply {
             adapter = this@MainFragment.adapter
             layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
         }
         fragmentMainBinding.addMainBtn.setOnClickListener {
             val args = Bundle()
