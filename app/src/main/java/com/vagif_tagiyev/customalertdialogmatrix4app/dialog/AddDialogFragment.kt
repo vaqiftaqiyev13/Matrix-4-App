@@ -9,6 +9,7 @@ import com.vagif_tagiyev.customalertdialogmatrix4app.databinding.FragmentAddDial
 import com.vagif_tagiyev.customalertdialogmatrix4app.model.Person
 
 class AddDialogFragment : DialogFragment() {
+    var id:Long = 0
     private lateinit var binding: FragmentAddDialogBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,7 +26,7 @@ class AddDialogFragment : DialogFragment() {
 
             listener.onAddClick(
                 person = Person(
-                    null, binding.nameLayout.editText!!.text.toString(),
+                    id++, binding.nameLayout.editText!!.text.toString(),
                     binding.surnameEditTxt.text.toString(),
                     binding.ageEditTxt.text.toString().toInt()
 

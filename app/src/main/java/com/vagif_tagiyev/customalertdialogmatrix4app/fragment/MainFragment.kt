@@ -37,6 +37,7 @@ class MainFragment : Fragment(), AddDialogClickListener {
         fragmentMainBinding.addMainBtn.setOnClickListener {
             val args = Bundle()
             args.putSerializable("AddDialogListener", this)
+            addDialogFragment.arguments = args
             addDialogFragment.show(childFragmentManager, "AddDialog")
         }
         return fragmentMainBinding.root
