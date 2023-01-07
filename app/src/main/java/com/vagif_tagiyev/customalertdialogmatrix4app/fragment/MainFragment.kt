@@ -18,7 +18,8 @@ import com.vagif_tagiyev.customalertdialogmatrix4app.model.Person
 class MainFragment : Fragment(), AddDialogClickListener {
     lateinit var fragmentMainBinding: FragmentMainBinding
     private var TAG = "MainFragment"
-    private val addDialogFragment by lazy{AddDialogFragment()}
+    var lastId = 0L
+    private lateinit var addDialogFragment : AddDialogFragment
     private lateinit var adapter: Adapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +38,7 @@ class MainFragment : Fragment(), AddDialogClickListener {
         fragmentMainBinding.addMainBtn.setOnClickListener {
             val args = Bundle()
             args.putSerializable("AddDialogListener", this)
+            addDialogFragment = AddDialogFragment()
             addDialogFragment.arguments = args
             addDialogFragment.show(childFragmentManager, "AddDialog")
         }
@@ -44,7 +46,9 @@ class MainFragment : Fragment(), AddDialogClickListener {
     }
 
     override fun onAddClick(person: Person) {
-        adapter.addPerson(person)
+        adapter.addPerson(person.also {
+            it.personID = lastId++
+        })
     }
 
 
