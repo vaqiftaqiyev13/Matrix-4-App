@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.vagif_tagiyev.customalertdialogmatrix4app.R
 import com.vagif_tagiyev.customalertdialogmatrix4app.adapter.Adapter
@@ -29,7 +30,6 @@ class MainFragment : Fragment(), AddDialogClickListener {
         fragmentMainBinding = FragmentMainBinding.inflate(layoutInflater,container,false)
         adapter = Adapter(arrayListOf())
         fragmentMainBinding.rv.adapter = adapter
-
         fragmentMainBinding.rv.apply {
             adapter = this@MainFragment.adapter
             layoutManager = LinearLayoutManager(requireContext())
@@ -42,6 +42,7 @@ class MainFragment : Fragment(), AddDialogClickListener {
             addDialogFragment.arguments = args
             addDialogFragment.show(childFragmentManager, "AddDialog")
         }
+
         return fragmentMainBinding.root
     }
 
@@ -49,7 +50,11 @@ class MainFragment : Fragment(), AddDialogClickListener {
         adapter.addPerson(person.also {
             it.personID = lastId++
         })
+        val detailAction = MainFragmentDirections.mainToDetails(person)
+        findNavController().navigate(detailAction)
+
     }
+
 
 
 }

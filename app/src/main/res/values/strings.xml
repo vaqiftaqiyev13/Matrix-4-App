@@ -7,4 +7,6 @@
     <string name="age">Age:</string>
     <string name="add">Add</string>
     <string name="id">ID:</string>
+    <string name="person">person</string>
+    <string name="back">Back</string>
 </resources>

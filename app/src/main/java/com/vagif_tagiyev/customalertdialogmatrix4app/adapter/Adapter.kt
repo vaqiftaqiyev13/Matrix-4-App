@@ -4,9 +4,12 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.vagif_tagiyev.customalertdialogmatrix4app.databinding.ListItemBinding
+import com.vagif_tagiyev.customalertdialogmatrix4app.fragment.MainFragmentDirections
 import com.vagif_tagiyev.customalertdialogmatrix4app.model.Person
 
 class Adapter(private var personList: ArrayList<Person>) :
@@ -26,6 +29,9 @@ class Adapter(private var personList: ArrayList<Person>) :
             it.itemName.text = person.personName
             it.itemSurname.text = person.personSurname
             it.itemAge.text = person.personAge.toString()
+
+
+
         }
     }
 
