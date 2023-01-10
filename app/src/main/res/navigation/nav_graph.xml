@@ -12,16 +12,20 @@
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/main_to_details"
-            app:destination="@id/detailsFragment" />
+            app:destination="@id/detailsFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.vagif_tagiyev.customalertdialogmatrix4app.fragment.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" >
-
         <argument
             android:name="person"
             app:argType="com.vagif_tagiyev.customalertdialogmatrix4app.model.Person" />
+        <action
+            android:id="@+id/detail_to_main"
+            app:destination="@id/mainFragment" />
     </fragment>
 </navigation>

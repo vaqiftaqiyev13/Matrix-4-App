@@ -4,6 +4,9 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import android.widget.Toast.makeText
+import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +17,8 @@ import com.vagif_tagiyev.customalertdialogmatrix4app.model.Person
 
 class Adapter(private var personList: ArrayList<Person>) :
     RecyclerView.Adapter<Adapter.ViewHolder>() {
+
+    var onItemClick:((Person) -> Unit)? = null
 
     inner class ViewHolder(val holderBinding: ListItemBinding) :
         RecyclerView.ViewHolder(holderBinding.root)
@@ -29,8 +34,10 @@ class Adapter(private var personList: ArrayList<Person>) :
             it.itemName.text = person.personName
             it.itemSurname.text = person.personSurname
             it.itemAge.text = person.personAge.toString()
+        }
 
-
+        holder.itemView.setOnClickListener {
+               onItemClick?.invoke(person)
 
         }
     }

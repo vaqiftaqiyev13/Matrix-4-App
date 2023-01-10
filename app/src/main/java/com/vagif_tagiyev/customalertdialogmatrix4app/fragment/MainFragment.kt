@@ -1,15 +1,12 @@
 package com.vagif_tagiyev.customalertdialogmatrix4app.fragment
 
-import android.nfc.Tag
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.vagif_tagiyev.customalertdialogmatrix4app.R
 import com.vagif_tagiyev.customalertdialogmatrix4app.adapter.Adapter
 import com.vagif_tagiyev.customalertdialogmatrix4app.databinding.FragmentMainBinding
 import com.vagif_tagiyev.customalertdialogmatrix4app.dialog.AddDialogClickListener
@@ -29,6 +26,12 @@ class MainFragment : Fragment(), AddDialogClickListener {
         // Inflate the layout for this fragment
         fragmentMainBinding = FragmentMainBinding.inflate(layoutInflater,container,false)
         adapter = Adapter(arrayListOf())
+
+        adapter.onItemClick = {
+            val action = MainFragmentDirections.mainToDetails(it)
+            findNavController().navigate(action)
+        }
+
         fragmentMainBinding.rv.adapter = adapter
         fragmentMainBinding.rv.apply {
             adapter = this@MainFragment.adapter
@@ -43,6 +46,8 @@ class MainFragment : Fragment(), AddDialogClickListener {
             addDialogFragment.show(childFragmentManager, "AddDialog")
         }
 
+
+
         return fragmentMainBinding.root
     }
 
@@ -50,11 +55,13 @@ class MainFragment : Fragment(), AddDialogClickListener {
         adapter.addPerson(person.also {
             it.personID = lastId++
         })
-        val detailAction = MainFragmentDirections.mainToDetails(person)
-        findNavController().navigate(detailAction)
+
 
     }
 
+//    override fun onItemClick(position: Int) {
+//
+//    }
 
 
 }
